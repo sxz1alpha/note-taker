@@ -1,114 +1,17 @@
-{
-    "animals": [
-      {
-        "id": "0",
-        "name": "Spindle",
-        "species": "bear",
-        "diet": "omnivore",
-        "personalityTraits": [
-          "hungry",
-          "zany",
-          "loving"
-        ]
-      },
-      {
-        "id": "1",
-        "name": "Terry",
-        "species": "gorilla",
-        "diet": "folivore",
-        "personalityTraits": [
-          "anxious",
-          "goofy"
-        ]
-      },
-      {
-        "id": "2",
-        "name": "Erica",
-        "species": "gorilla",
-        "diet": "folivore",
-        "personalityTraits": [
-          "quirky",
-          "rash"
-        ]
-      },
-      {
-        "id": "3",
-        "name": "Noel",
-        "species": "bear",
-        "diet": "omnivore",
-        "personalityTraits": [
-          "impish",
-          "sassy",
-          "brave"
-        ]
-      },
-      {
-        "id": "4",
-        "name": "Coco",
-        "species": "penguin",
-        "diet": "piscivore",
-        "personalityTraits": [
-          "loving",
-          "goofy"
-        ]
-      },
-      {
-        "id": "5",
-        "name": "Marcy",
-        "species": "ostrich",
-        "diet": "omnivore",
-        "personalityTraits": [
-          "hungry",
-          "goofy"
-        ]
-      },
-      {
-        "id": "6",
-        "name": "Bodhi",
-        "species": "Doggo",
-        "diet": "omnivore",
-        "personalityTraits": [
-          "zany"
-        ]
-      },
-      {
-        "id": "7",
-        "name": "Cassie",
-        "species": "Doggo",
-        "diet": "omnivore",
-        "personalityTraits": [
-          "hungry",
-          "zany",
-          "goofy"
-        ]
-      },
-      {
-        "id": "8",
-        "name": "Roxy",
-        "species": "Quokka",
-        "diet": "herbivore",
-        "personalityTraits": [
-          "loving"
-        ]
-      },
-      {
-        "id": "9",
-        "name": "Tamara",
-        "species": "Tiger",
-        "diet": "carnivore",
-        "personalityTraits": [
-          "hungry"
-        ]
-      },
-      {
-        "name": "hally",
-        "species": "ape",
-        "diet": "herbivore",
-        "personalityTraits": [
-          "hungry",
-          "goofy"
-        ],
-        "id": "10"
-      }
-    ]
-}
+[
+  {
+    "title": "Soccer Practice",
+    "body": "Remember to show up for soccer practice at 3pm",
+    "id": "d1b9894b-fbf3-4f61-9075-c12269a17b44"
+  },
+  {
+    "title": "Soccer Practice",
+    "body": "Remember to show up for soccer practice at 3pm",
+    "id": "67a9777a-34b8-4e75-80ea-bc499fae70ac"
+  },
+  {
+    "title": "Soccer Practice",
+    "body": "Remember to show up for soccer practice at 3pm",
+    "id": "6848860b-66ed-4f1f-b8e3-ff24c0acddd2"
+  }
+]
