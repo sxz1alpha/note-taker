@@ -2,23 +2,25 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
-const notes  = require(`./Develop/db/db.json`);
+let notes  = require(`./Develop/db/db.json`);
 
 //instantiates the server 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('Develop/public'))
 
 
-function createNewNote(body, notesArray) {
+function createNewNote(body, notes) {
     const note = body
-    notesArray.push(note)
-    fs.writeFile(
+    notes.push(note)
+    console.log(notes)
+    fs.writeFileSync(
         path.join(__dirname, './Develop/db/db.json'),
-        JSON.stringify(notesArray, null, 2)
+        // './Develop/db/db.json',
+        JSON.stringify(notes, null, 2)
     );
     return note;
 };
@@ -27,7 +29,6 @@ app.get('/api/notes', (req, res) => {
     res.json(notes);
 })
 
-
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './Develop/public/notes.html'))
 });
@@ -35,9 +36,6 @@ app.get('/notes', (req, res) => {
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './Develop/public/index.html'))
 });
-
-
-
 
 //creates data in a file
 app.post('/api/notes', (req, res) => {
@@ -52,40 +50,37 @@ app.post('/api/notes', (req, res) => {
     
 });
 
-
-
-
 // deletes data from the file
 app.delete('/api/notes/:id', (req, res) => {
     const id = req.params.id;
     const note = notes.find(element => element.id === id); 
-    // if(!note) { 
-        //     return res.status(404).json({error: 'No note found.', success: false})
-        // }
+    if(!note) { 
+            return res.status(404).json({error: 'No note found.', success: false})
+    }
         
-        let updatedData = [...notes]
-        console.log(updatedData);
-        //finds the element with the matching id and removes it from the updatedData
-        updatedData = updatedData.filter(element => element.id !== id)
-        console.log(updatedData);
-        console.log('outside writefile')
-        fs.writeFile(
-            // path.join(__dirname, './Develop/db/db.json'),
-            './Develop/db/db.json',
-            JSON.stringify(updatedData, null, 2),
-            (err) => {
-                
-                // if(err) throw err;  
-                // res.json(updatedData);
-            }
-            
-            );
-        })
+    //finds the element with the matching id and removes it from the updatedData
+    notes = notes.filter(element => element.id !== id)
+
+    fs.writeFile(
+        path.join(__dirname, './Develop/db/db.json'),
+        // './Develop/db/db.json',
+        JSON.stringify(notes, null, 2),
+        (err) => {
+            if(err) throw err;  
+            res.status(200).json(notes);
+        }
+        
+    );
+})
         
         
 app.listen(3003, () => {
     console.log(`API server now on port ${3003}`)
 });
+
+// Notes for alternate routes and functionality.
+//=============================================================================================================
+
 
 // function filterByQuery(query, notesArray) {
     
@@ -116,50 +111,50 @@ app.listen(3003, () => {
         //     const { title, text } = req.body;
         //     const updatedNote = {...note}
         //     if(title) {
-            //         updatedNote.title = title;
+        //         updatedNote.title = title;
+        //     }
+        //     if(text) {
+            //         updatedNote.text = text;
             //     }
-            //     if(text) {
-                //         updatedNote.text = text;
+            
+            //     let updatedData = [...notes]
+            //     updatedData = updatedData.filter(element => element.id !== id)
+            
+            //     updatedData = [...updatedData, updatedNote]
+            
+            //     fs.writeFileSync(
+                //         path.join(__dirname, './Develop/db/db.json'),
+                //         JSON.stringify(updatedData, null, 2)
+                //     );
+                
+                //     res.json(updatedNote)
+                // });
+                //finds specific data in the file
+                // app.get('/api/notes/:id', (req, res) => {
+                //     const noteId = req.params.id;
+                //     const data = filterByQuery({id:noteId}, notes);
+                
+                //     if (data.length === 0) {
+                //         return res.status(404).json({error: "This isnt the data you're looking for."});
                 //     }
+                //     res.json(data);
+                // });
                 
-                //     let updatedData = [...notes]
-                //     updatedData = updatedData.filter(element => element.id !== id)
+                // app.get('/api/notes/name/:name', (req, res) => {
+                //     const noteName = req.params.name;
+                //     const data = filterByQuery({name:noteName}, notes);
                 
-                //     updatedData = [...updatedData, updatedNote]
+                //     if (data.length === 0) {
+                //         return res.status(404).json({error: "This isnt the data you're looking for."});
+                //     }
+                //     res.json(data);
+                // });
+                // app.get('/api/notes/date/:date', (req, res) => {
+                //     const noteDate = req.params.date;
+                //     const data = filterByQuery({date:noteDate}, notes);
                 
-                //     fs.writeFileSync(
-                    //         path.join(__dirname, './Develop/db/db.json'),
-                    //         JSON.stringify(updatedData, null, 2)
-                    //     );
-                    
-                    //     res.json(updatedNote)
-                    // });
-                    //finds specific data in the file
-                    // app.get('/api/notes/:id', (req, res) => {
-                    //     const noteId = req.params.id;
-                    //     const data = filterByQuery({id:noteId}, notes);
-                    
-                    //     if (data.length === 0) {
-                    //         return res.status(404).json({error: "This isnt the data you're looking for."});
-                    //     }
-                    //     res.json(data);
-                    // });
-                    
-                    // app.get('/api/notes/name/:name', (req, res) => {
-                    //     const noteName = req.params.name;
-                    //     const data = filterByQuery({name:noteName}, notes);
-                    
-                    //     if (data.length === 0) {
-                    //         return res.status(404).json({error: "This isnt the data you're looking for."});
-                    //     }
-                    //     res.json(data);
-                    // });
-                    // app.get('/api/notes/date/:date', (req, res) => {
-                    //     const noteDate = req.params.date;
-                    //     const data = filterByQuery({date:noteDate}, notes);
-                    
-                    //     if (data.length === 0) {
-                    //         return res.status(404).json({error: "This isnt the data you're looking for."});
-                    //     }
-                    //     res.json(data);
-                    // });
+                //     if (data.length === 0) {
+                //         return res.status(404).json({error: "This isnt the data you're looking for."});
+                //     }
+                //     res.json(data);
+                // });
