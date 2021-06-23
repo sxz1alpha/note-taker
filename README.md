@@ -1,29 +1,22 @@
-# note-taker
-A program that assists users with writing notes, Organizing their thoughts, and making their lives stress free.
+# Note taker
 
+_Link to deployed application_
+https://fathomless-earth-09970.herokuapp.com/notes
 
-GIVEN a note-taking application
+## Description
+Note taker is a express.js application that allows users to take notes and have them persist in the server environment. This allows user to access their notes from any computer or smart phone.
 
-WHEN I open the Note Taker
+## Install
 
-THEN I am presented with a landing page with a link to a notes page
+This application is already deployed 
+to the server environment in Heroku. However if a user wants to install and run a local server then simply clone the repository. Install npm. open the console in the root directory of the application on your local machine and type npm I.
 
-WHEN I click on the link to the notes page
+## Usage
 
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
+* Go to the deployed url.
+* Click on get started.
+* Where it says note title and note text. click to add your own note. fill in the note then click the save icon at the top right of the screen.
+* To delete nots click on that notes trash icon.
 
-WHEN I enter a new note title and the note’s text
-
-THEN a Save icon appears in the navigation at the top of the page
-
-WHEN I click on the Save icon
-
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
-
-WHEN I click on an existing note in the list in the left-hand column
-
-THEN that note appears in the right-hand column
-
-WHEN I click on the Write icon in the navigation at the top of the page
-
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
+![note taker-1](https://user-images.githubusercontent.com/80006081/123145918-90e38480-d41a-11eb-9ae1-94e79ed219f0.png)
+![note taker-2](https://user-images.githubusercontent.com/80006081/123145924-917c1b00-d41a-11eb-8fa7-718bb2f1c826.png)
