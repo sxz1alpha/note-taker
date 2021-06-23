@@ -48,7 +48,7 @@ app.post('/api/notes', (req, res) => {
     const note = createNewNote(userNote, notes)
     res.json(note)
     
-    
+
 });
 
 // deletes data from the file
@@ -75,8 +75,8 @@ app.delete('/api/notes/:id', (req, res) => {
 })
         
         
-app.listen(3003, () => {
-    console.log(`API server now on port ${3003}`)
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORT}`)
 });
 
 // Notes for alternate routes and functionality.
