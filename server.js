@@ -48,6 +48,7 @@ app.post('/api/notes', (req, res) => {
     const note = createNewNote(userNote, notes)
     res.json(note)
     
+    
 });
 
 // deletes data from the file
